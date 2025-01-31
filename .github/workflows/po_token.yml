@@ -1,0 +1,38 @@
+name: Generator Po-token
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 7 * * *"
+jobs:
+  Generator_Po_token:
+    name: Generator Po-token
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+      - name: Run
+        run: |
+          npm install > /dev/null 2>&1
+          chmod +x index.js > /dev/null 2>&1
+          node index.js | awk '/PO_TOKEN:/ {PO_TOKEN=$2} /VISITOR_DATA:/ {VISITOR_DATA=$2} END {print "PO_TOKEN:\n```\n" PO_TOKEN "\n```\nVISITOR_DATA:\n```\n" VISITOR_DATA "\n```"}' > "${GITHUB_WORKSPACE}-CHANGELOG.txt" && mv "${GITHUB_WORKSPACE}-CHANGELOG.txt" README.md
+      - name: Edit Readme
+        uses: stefanzweifel/git-auto-commit-action@v5.0.0
+        with:
+          branch: main
+          skip_checkout: true
+          skip_dirty_check: true
+          push_options: '--force'
+          file_pattern: 'README.md'
+          commit_message: PO_TOKEN
+      - name: Delete workflow runs
+        uses: Mattraks/delete-workflow-runs@v2.0.6
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: 0
+          keep_minimum_runs: 4
