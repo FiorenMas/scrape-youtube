@@ -1,56 +1,8 @@
-## How to Run Scrape-YouTube-Termux
-
-### 1. Install Termux
-
-[Termux Official](https://github.com/termux/termux-app/releases/latest)
-
-[Termux Monet (Deprecated)](https://github.com/Termux-Monet/termux-monet/releases/latest)
-
-### 2. Install Scrape-YouTube-Termux
-
-First, run termux and type the following command:
-
+PO_TOKEN:
 ```
-curl -sLo pot.sh https://raw.githubusercontent.com/inotia00/scrape-youtube-termux/main/scrape-youtube.sh && chmod +x pot.sh && curl -sLo container.sh https://raw.githubusercontent.com/inotia00/scrape-youtube-termux/main/install-alpine.sh && chmod +x container.sh && ./container.sh
+MnexnVVsggIMJrGmCATTwXnOkb4e6Wsx1uQkp95BrRQeAG7W7-6tmn9iMsaudiQCWoBRvXnuSv0dzApcSTGQTlPVf51K_VyY2a1kGxmP7rvlW-gDf5u8CCDSZfxT29Cgq0XBQQQDBYXMC7otgkMvsOMJFqec2Apb6w==
 ```
-
-Alpine Linux will be installed and run.
-
-If Alpine Linux is running, type the following command:
-
+VISITOR_DATA:
 ```
-sh pot.sh
+Cgt2YkI2R24wUGd5SSjPkfO8BjIKCgJVUxIEGgAgIg%3D%3D
 ```
-
-Scrape-YouTube will run, and PO Token and visitor data will be output:
-
-```bash
-PO_TOKEN: <PO_TOKEN_HERE>
-VISITOR_DATA: <VISITOR_DATA_HERE>
-```
-
-### 3. Run Scrape-YouTube-Termux
-
-If Scrape-YouTube-Termux is already installed, you can use the following commands.
-
-Run Alpine Linux:
-
-```
-container
-```
-
-Run Scrape-YouTube:
-
-```
-sh pot.sh
-```
-
-## References
-
-Scrap-YouTube-Termux has brought the core feature of both repository:
-
-* [Scrape-YouTube](https://github.com/fsholehan/scrape-youtube)
-: Main source of the Scrap-YouTube-Termux.
-
-* [Puppeteer-On-Termux](https://github.com/sarowarhosen03/puppeteer-on-termux)
-: Package for running Puppetier on Termux.
